@@ -18,8 +18,8 @@ AFRAME.registerComponent('line-draw', {
             cylinder.setAttribute('position', e.detail.intersection.point);
             curve_center.setAttribute('position', e.detail.intersection.point);
             camera.setAttribute('position', {x: 0, y: 0, z: 0});
-            cylinder.setAttribute('height', 18);
-            sphere.setAttribute('position', {x: 0, y: 9, z: 0})
+            cylinder.setAttribute('height', 12);
+            sphere.setAttribute('position', {x: 0, y: 6, z: 0})
             //camera.setAttribute('rotation', {x: 1.948, y: 88.865, z: -1.776});
             console.log(camera.components.position);
             console.log(cylinder.getDOMAttribute('geometry').height);
