@@ -27,11 +27,4 @@ AFRAME.registerComponent('line-draw', {
             // console.log(sphere.position);
         });
     },
-
-    // var triggerShake = document.createEvent("HTMLEvents");
-    // triggerShake.initEvent("shake", true, true);
-
-    // function shakeMe(){
-    //   document.dispatchEvent(triggerShake);
-    // }
 });
