@@ -5,6 +5,7 @@
     <title>Space and Mise En Scene</title>
     <meta name="description" content="360&deg; Image Gallery - A-Frame">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-shake2show-component/master/dist/aframe-shake2show-component.min.js"></script>
     <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
@@ -23,9 +24,12 @@
         <script id="stagechange" type="text/html">
           <a-entity class="link"
             geometry="primitive: box; height: 0.3; width: 0.3"
-            material="src: woodfloor"
+            material="src: assets/woodfloor"
             sound="on: click; src: assets/click.wav" ></a-entity>
         </script>
+        <img crossorigin id="woodfloor" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Fwoodfloor.jpg?1522142454218">
+        <img crossorigin id="audience" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Faudience.jpg?1522142453804">
+        <img crossorigin id="mask" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Fmask.png?1522150263297">
       </a-assets>
 
       <!-- surrounding -->
@@ -39,7 +43,7 @@
 
       <!-- Ground -->
       <a-plane id="lineplane" rotation="-90 0 0" width="30" height="50" repeat="10 10" line-draw></a-plane>
-      <a-plane id="floor" src="woodfloor.jpg" rotation="-90 0 0" width="30" height="50" repeat="10 10"></a-plane>
+      <a-plane id="floor" crossorigin src="#woodfloor" rotation="-90 0 0" width="30" height="50" repeat="10 10"></a-plane>
 
       <!-- Curve -->
       <a-curve id="track1">
@@ -49,9 +53,9 @@
         </a-curve-point>
       </a-curve>
       <!-- Drawing the curve -->
-      <a-draw-curve curveref="#track1" material="shader: line; color: blue;"></a-draw-curve>
+      <a-draw-curve curveref="#track1" material="shader: line; color: white;"></a-draw-curve>
       <!-- Clone a box along the curve -->
-      <a-entity clone-along-curve="curve: #track1; spacing: 0.2; scale: 1 1 1; rotation: 0 0 0;" geometry="primitive:box; height:0.1; width:0.2; depth:0.1"></a-entity>
+      <!--a-entity clone-along-curve="curve: #track1; spacing: 0.2; scale: 2 2 2; rotation: 0 0 0;" geometry="primitive:box; height:0.1; width:0.5; depth:0.5"></a-entity>
 
       <!-- Curtains -->
       <a-plane color="#E83737" height="30" width="7" position="1.907 11 -15.893" rotation="0 90 0"></a-plane>
@@ -84,14 +88,17 @@
       </a-sphere> -->
 
       <!-- audience -->
-      <a-curvedimage src="assets/audience.jpg" height="30" radius="80" theta-length="72"
+      <a-curvedimage src="#audience" height="30" radius="80" theta-length="72"
                  rotation="0 53.228 0" position="-42.05 12.053 0" scale="0.8 0.8 0.8"></a-curvedimage>
 
       <!-- Camera + cursor.  -->
+      <a-plane shake2show src="#mask" visible="false" height="10" width="20" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-plane>
+      <!-- <a-plane src="#ground" height="100" width="100" rotation="-90 0 0"></a-plane> -->
       <a-entity id="#rig" position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
         <a-entity id="camera" camera look-controls>
           <a-cursor id="cursor"></a-cursor>
         </a-entity>
       </a-entity>
+    </a-scene>
   </body>
 </html>
