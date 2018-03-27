@@ -23,7 +23,7 @@
         <script id="stagechange" type="text/html">
           <a-entity class="link"
             geometry="primitive: box; height: 0.3; width: 0.3"
-            material="src: assets/woodfloor"
+            material="src: woodfloor"
             sound="on: click; src: assets/click.wav" ></a-entity>
         </script>
       </a-assets>
@@ -39,7 +39,7 @@
 
       <!-- Ground -->
       <a-plane id="lineplane" rotation="-90 0 0" width="30" height="50" repeat="10 10" line-draw></a-plane>
-      <a-plane id="floor" src="assets/woodfloor.jpg" rotation="-90 0 0" width="30" height="50" repeat="10 10"></a-plane>
+      <a-plane id="floor" src="woodfloor.jpg" rotation="-90 0 0" width="30" height="50" repeat="10 10"></a-plane>
 
       <!-- Curve -->
       <a-curve id="track1">
@@ -88,8 +88,10 @@
                  rotation="0 53.228 0" position="-42.05 12.053 0" scale="0.8 0.8 0.8"></a-curvedimage>
 
       <!-- Camera + cursor.  -->
-      <a-camera position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
-        <a-cursor id="cursor"></a-cursor>
-      </a-camera>
+      <a-entity id="#rig" position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
+        <a-entity id="camera" camera look-controls>
+          <a-cursor id="cursor"></a-cursor>
+        </a-entity>
+      </a-entity>
   </body>
 </html>
