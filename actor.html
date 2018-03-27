@@ -88,8 +88,10 @@
                  rotation="0 53.228 0" position="-42.05 12.053 0" scale="0.8 0.8 0.8"></a-curvedimage>
 
       <!-- Camera + cursor.  -->
-      <a-camera position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
-        <a-cursor id="cursor"></a-cursor>
-      </a-camera>
+      <a-entity id="#rig" position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
+        <a-entity id="camera" camera look-controls>
+          <a-cursor id="cursor"></a-cursor>
+        </a-entity>
+      </a-entity>
   </body>
 </html>
