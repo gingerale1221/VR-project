@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Space and Mise En Scene</title>
     <meta name="description" content="360&deg; Image Gallery - A-Frame">
-    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-shake2show-component/master/dist/aframe-shake2show-component.min.js"></script>
-    <script src="mask.js"></script>
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<!--     <script src="https://rawgit.com/rdub80/aframe-shake2show-component/master/dist/aframe-shake2show-component.min.js"></script> -->
+    <script src="script.js"></script>
     <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
@@ -18,9 +18,9 @@
     <script src="aframe-curve-component.js"></script>-->
   </head>
   <body>
-<!--     <button id="btn" onclick="shakeMe();">
+    <button id="btn" onclick="shakeMe();">
       Shake
-    </button> -->
+    </button>
     <a-scene>
       <a-assets>
       <!-- stage change options -->
@@ -33,6 +33,7 @@
         <img crossorigin id="woodfloor" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Fwoodfloor.jpg?1522142454218">
         <img crossorigin id="audience" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Faudience.jpg?1522142453804">
         <img crossorigin id="mask" src="https://cdn.glitch.com/870721bd-583e-4098-bb6a-72d05c8a0c34%2Fmask.png?1522589386329">
+        <img crossorigin id="blankmask" src="https://cdn.glitch.com/363ebadd-7355-4097-8305-523a4ce5d5fd%2Fblankmask.png?1522900196180">
       </a-assets>
 
       <!-- surrounding -->
@@ -55,8 +56,8 @@
       <a-plane color="#E83737" height="30" width="7" position="-9.054 11 -12.341" rotation="0 90 0"></a-plane>
 
       <!-- actor -->
-      <a-cylinder position="0 4.498 -0.01" radius="0.5" height="8" color="#4FA6AF">
-        <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+      <a-cylinder shake2hide position="0 4.498 -0.01" radius="0.5" height="17" color="#4FA6AF">
+        <a-sphere position="0 9 0" radius="1" color="#4FA6AF"></a-sphere>
       </a-cylinder>
       
       <!-- <a-sphere position="-0.3 8.242 0.892" radius="1" color="#4FA6AF">
@@ -66,55 +67,39 @@
       <!-- audience -->
       <a-curvedimage src="#audience" height="30" radius="80" theta-length="72"
                  rotation="0 53.228 0" position="-42.05 12.053 0" scale="0.8 0.8 0.8"></a-curvedimage>
-
-      <!-- Mask -->
-      <a-plane shake2show visible="false" src="#mask" height="10" width="20" position="0 10 0" rotation="0 90 0" scale="1 1 1"></a-plane>
-      <!-- <a-plane src="#ground" height="100" width="100" rotation="-90 0 0"></a-plane> -->
       
-      <!-- Test -->
-      <a-entity shake2show="" visible="false">
-<!-- 		<a-entity geometry="primitive:cylinder; height:0.025; radius:0.025;" material="color:black" position="-0.035 0.01 -0.02" rotation="" scale="" visible="">
-		</a-entity>
-		<a-entity geometry="primitive:cylinder; height:0.025; radius:0.025;" material="color:black" position="0.035 0.01 -0.02" rotation="" scale="" visible="">
-		</a-entity>
-		<a-entity geometry="primitive:cylinder; height:0.025; radius:0.05; theta-start:-90; theta-length:180;" material="color:black" position="0 0.015 0.02" rotation="" scale="" visible="">
-		</a-entity> -->
-	    </a-entity>
-      
-      <!-- Second actor -->
       <a-entity shake2show visible="false">
+        <!-- Second actor -->
         <a-cylinder position="-5 -4.5 -5.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Third actor -->
+        <a-cylinder position="-7 -4.5 -3.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Fourth actor -->
+        <a-cylinder position="-11 -4.5 2.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Fifth actor -->
+        <a-cylinder position="-10 -4.5 5.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Sixth actor -->
+        <a-cylinder position="-12 -4.5 11.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Seventh actor -->
+        <a-cylinder position="-10 -4.5 14.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
         </a-cylinder>
       </a-entity>
-      
-      <!-- Third actor -->
-<!--       <a-entity shake2show visible="false">
-        <a-cylinder position="-5 -1.5 5.01" radius="0.5" height="8" color="#4FA6AF">
-          <a-sphere position="0 3.25 0" radius="1" color="#4FA6AF"></a-sphere>
-        </a-cylinder>
-      </a-entity> -->
-      
-      <!-- Fourth actor -->
-<!--       <a-entity > -->
-<!--         <a-cylinder shake2show visible="false" position="-7 -1.5 10.01" radius="0.5" height="8" color="#4FA6AF">
-          <a-sphere position="0 3.25 0" radius="1" color="#4FA6AF"></a-sphere>
-        </a-cylinder> -->
-<!--       </a-entity> -->
-      
-      <!-- Fifth actor -->
-<!--       <a-entity > -->
-<!--         <a-cylinder shake2show visible="false" position="-8 -1.5 13.01" radius="0.5" height="8" color="#4FA6AF">
-          <a-sphere position="0 3.25 0" radius="1" color="#4FA6AF"></a-sphere>
-        </a-cylinder> -->
-<!--       </a-entity> -->
-      
-      <!-- Sixth actor -->
-<!--       <a-entity > -->
-<!--         <a-cylinder shake2show visible="false" position="-7 -1.5 -5.01" radius="0.5" height="8" color="#4FA6AF">
-          <a-sphere position="0 3.25 0" radius="1" color="#4FA6AF"></a-sphere>
-        </a-cylinder> -->
-<!--       </a-entity> -->
       
       <!-- Camera + cursor.  -->
       <a-entity id="#rig" position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
