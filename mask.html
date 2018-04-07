@@ -18,9 +18,9 @@
     <script src="aframe-curve-component.js"></script>-->
   </head>
   <body>
-    <button id="btn" onclick="shakeMe();">
+<!--     <button id="btn" onclick="shakeMe();">
       Shake
-    </button>
+    </button> -->
     <a-scene>
       <a-assets>
       <!-- stage change options -->
@@ -34,6 +34,7 @@
         <img crossorigin id="audience" src="https://cdn.glitch.com/d9bdfdad-7e37-4b1c-873c-21d95bffa8da%2Faudience.jpg?1522142453804">
         <img crossorigin id="mask" src="https://cdn.glitch.com/870721bd-583e-4098-bb6a-72d05c8a0c34%2Fmask.png?1522589386329">
         <img crossorigin id="blankmask" src="https://cdn.glitch.com/363ebadd-7355-4097-8305-523a4ce5d5fd%2Fblankmask.png?1522900196180">
+        <img crossorigin id="ritualmask" src="https://cdn.glitch.com/363ebadd-7355-4097-8305-523a4ce5d5fd%2Fritualmask.png?1523066925531">
       </a-assets>
 
       <!-- surrounding -->
@@ -56,8 +57,8 @@
       <a-plane color="#E83737" height="30" width="7" position="-9.054 11 -12.341" rotation="0 90 0"></a-plane>
 
       <!-- actor -->
-      <a-cylinder shake2hide position="0 4.498 -0.01" radius="0.5" height="17" color="#4FA6AF">
-        <a-sphere position="0 9 0" radius="1" color="#4FA6AF"></a-sphere>
+      <a-cylinder shake2hide position="0 4.498 -0.01" radius="0.5" height="15" color="#4FA6AF">
+        <a-sphere position="0 7 0" radius="1" color="#4FA6AF"></a-sphere>
       </a-cylinder>
       
       <!-- <a-sphere position="-0.3 8.242 0.892" radius="1" color="#4FA6AF">
@@ -68,36 +69,72 @@
       <a-curvedimage src="#audience" height="30" radius="80" theta-length="72"
                  rotation="0 53.228 0" position="-42.05 12.053 0" scale="0.8 0.8 0.8"></a-curvedimage>
       
+      <!-- Blank masks -->
       <a-entity shake2show visible="false">
         <!-- Second actor -->
-        <a-cylinder position="-5 -4.5 -5.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-5 -5.5 -5.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
+<!--           <a-plane id="shaketwice" src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane> -->
         </a-cylinder>
         <!-- Third actor -->
-        <a-cylinder position="-7 -4.5 -3.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-7 -5.5 -3.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
         </a-cylinder>
         <!-- Fourth actor -->
-        <a-cylinder position="-11 -4.5 2.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-11 -5.5 2.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
         </a-cylinder>
         <!-- Fifth actor -->
-        <a-cylinder position="-10 -4.5 5.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-10 -5.5 5.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
         </a-cylinder>
         <!-- Sixth actor -->
-        <a-cylinder position="-12 -4.5 11.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-12 -5.5 11.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
         </a-cylinder>
         <!-- Seventh actor -->
-        <a-cylinder position="-10 -4.5 14.01" radius="0.5" height="8" color="#4FA6AF">
+        <a-cylinder position="-10 -5.5 14.01" radius="0.5" height="8" color="#4FA6AF">
           <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
           <a-plane src="#blankmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+      </a-entity>
+      
+      <!-- Ritual masks -->
+      <a-entity shake2show visible="true">
+        <!-- Second actor -->
+        <a-cylinder position="-5 -5.5 -5.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Third actor -->
+        <a-cylinder position="-7 -5.5 -3.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 45 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Fourth actor -->
+        <a-cylinder position="-11 -5.5 2.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Fifth actor -->
+        <a-cylinder position="-10 -5.5 5.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Sixth actor -->
+        <a-cylinder position="-12 -5.5 11.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
+        </a-cylinder>
+        <!-- Seventh actor -->
+        <a-cylinder position="-10 -5.5 14.01" radius="0.5" height="8" color="#4FA6AF">
+          <a-sphere position="0 4.5 0" radius="1" color="#4FA6AF"></a-sphere>
+          <a-plane src="#ritualmask" height="2" width="2" position="1 4.5 0.5" rotation="0 90 0" opacity="0.9"></a-plane>
         </a-cylinder>
       </a-entity>
       
@@ -105,6 +142,8 @@
       <a-entity id="#rig" position="5.192 7.687 1.544" rotation="1.948 88.865 -1.776">
         <a-entity id="camera" camera look-controls>
           <a-cursor id="cursor"></a-cursor>
+          <!-- mask -->
+          <a-plane id="user-mask" shake2show visible="false" src="#mask" height="2" width="2" position="0 0 0" rotation="0 90 0" opacity="0.9" camera-follow></a-plane>
         </a-entity>
       </a-entity>
     </a-scene>
