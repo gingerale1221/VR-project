@@ -1,4 +1,4 @@
-var count = 0;
+// var count = 0;
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -104,24 +104,24 @@ var count = 0;
 		  throw new Error('Component attempted to register before AFRAME was available.');
 		}
     
-    AFRAME.registerComponent('camera-listener', {
-      tick: function () {
-        var cameraEl = this.el.sceneEl.camera.el;
-        cameraEl.getAttribute('position');
-        cameraEl.getAttribute('rotation');
-        // Do something.
-      }
-    });
+//     AFRAME.registerComponent('camera-listener', {
+//       tick: function () {
+//         var cameraEl = this.el.sceneEl.camera.el;
+//         cameraEl.getAttribute('position');
+//         cameraEl.getAttribute('rotation');
+//         // Do something.
+//       }
+//     });
     
-    AFRAME.registerComponent('camera-follow', {
-      init: function () {
-        var pos = document.querySelector('#camera').getAttribute('position');
-        var mask = document.querySelector('#user-mask');
-        mask.setAttribute('position', pos);
-        console.log(pos);
-        console.log(mask.position);
-      }
-    });
+//     AFRAME.registerComponent('camera-follow', {
+//       init: function () {
+//         var pos = document.querySelector('#camera').getAttribute('position');
+//         var mask = document.querySelector('#user-mask');
+//         mask.setAttribute('position', pos);
+//         console.log(pos);
+//         console.log(mask.position);
+//       }
+//     });
     
 		AFRAME.registerComponent('shake2show', {
 
@@ -346,8 +346,7 @@ var count = 0;
 
 		});
     
-    
-		AFRAME.registerComponent('alternate', {
+    		AFRAME.registerComponent('shake2opacity', {
 
 		    schema: {
 		        trigger: {
@@ -371,6 +370,7 @@ var count = 0;
 		    },
 
 		    init: function() { 
+
 			    //create a new instance of shake.js.
 			    var myShakeEvent = new Shake({
 
@@ -385,7 +385,6 @@ var count = 0;
 		        if ( this.data.trigger === "shake" ){
 
 	    			window.addEventListener(this.data.trigger, this.eventHandler.bind(this));
-            // count++;
 	    		
 	    		} else if( this.data.trigger === "click" ){
 	    		
@@ -394,62 +393,65 @@ var count = 0;
 	    		} else {
 		      		console.log("Trigger not supported. choose either 'shake' or 'click'!");    			
 	    		}
-          // console.log("count = " + count);
 
-		        this.cameraEl = document.querySelector('a-entity[camera]');
+// 		        this.cameraEl = document.querySelector('a-entity[camera]');
 
-		        if(this.cameraEl){
+// 		        if(this.cameraEl){
 
-			        this.initHeight =  Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100;
+// 			        this.initHeight =  Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100;
 
-			        this.yaxis = new THREE.Vector3(0, 1, 0);
-			        this.zaxis = new THREE.Vector3(0, 0, 1);
+// 			        this.yaxis = new THREE.Vector3(0, 1, 0);
+// 			        this.zaxis = new THREE.Vector3(0, 0, 1);
 
-			        this.pivot = new THREE.Object3D();
-			        this.el.object3D.position.set(this.data.xoffset, this.initHeight + this.data.yoffset, this.data.zpos);
+// 			        this.pivot = new THREE.Object3D();
+// 			        this.el.object3D.position.set(this.data.xoffset, this.initHeight + this.data.yoffset, this.data.zpos);
 
-			        this.el.sceneEl.object3D.add(this.pivot);
-			        this.pivot.add(this.el.object3D);
+// 			        this.el.sceneEl.object3D.add(this.pivot);
+// 			        this.pivot.add(this.el.object3D);
 		      	
-		      	}else{
-		      		console.log("Please add a camera to your scene.");
-		      	}
+// 		      	}else{
+// 		      		console.log("Please add a camera to your scene.");
+// 		      	}
 
 		    },
 
 		    eventHandler: function(evt) {
-              if (this.el.getAttribute('visible') === false) {
+                var mask = document.querySelector('#usermask');
+                mask.setAttribute('opacity', '0.5');
+// 		        if (this.el.getAttribute('visible') === true) {
 
-                var direction = this.zaxis.clone();
-                  direction.applyQuaternion(this.cameraEl.object3D.quaternion);
-                  var ycomponent = this.yaxis.clone().multiplyScalar(direction.dot(this.yaxis));
-                  direction.sub(ycomponent);
-                  direction.normalize();
+// 			        var direction = this.zaxis.clone();
+// 		            direction.applyQuaternion(this.cameraEl.object3D.quaternion);
+// 		            var ycomponent = this.yaxis.clone().multiplyScalar(direction.dot(this.yaxis));
+// 		            direction.sub(ycomponent);
+// 		            direction.normalize();
 
-                  this.pivot.quaternion.setFromUnitVectors(this.zaxis, direction);
+// 		            this.pivot.quaternion.setFromUnitVectors(this.zaxis, direction);
 
-                  var xposition = this.cameraEl.object3D.getWorldPosition().x;
-                  var yposition = (Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100);
-                  var zposition = this.cameraEl.object3D.getWorldPosition().z;
+// 		            var xposition = this.cameraEl.object3D.getWorldPosition().x;
+// 		            // var yposition = (Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100);
+//                 var yposition = this.cameraEl.object3D.getWorldPosition().y;
+// 		            var zposition = this.cameraEl.object3D.getWorldPosition().z;
 
-                  if(this.initHeight === yposition && this.initHeight !== 0){
-              yposition = 0
-                }else{
-                  yposition = yposition - this.initHeight;
-                }
+// 		            if(this.initHeight === yposition && this.initHeight !== 0){
+// 						yposition = 0
+// 			        }else{
+// 			        	yposition = yposition - this.initHeight;
+// 			        }
 
-                this.pivot.position.set(xposition, yposition, zposition);
+// 			        this.pivot.position.set(xposition, yposition, zposition);
 
-                  this.el.setAttribute('scale', '1 1 1');	            
-                  this.el.setAttribute('visible', true);
+// 		            this.el.setAttribute('scale', '1 1 1');	            
+// 		            this.el.setAttribute('visible', true);
 
 
-              } 
-              if (this.el.getAttribute('visible') === true) {
+// 		        } 
+		        // if (this.el.getAttribute('visible') === true) {
+		        // // this.el.setAttribute('visible', true);
+		        // // this.el.object3D.position.set(0, 0, -1);
+		        //   this.el.setAttribute('opacity', '0.5');
+		        // }
 
-                  this.el.setAttribute('scale', '0.00001 0.00001 0.00001');
-                  this.el.setAttribute('visible', false);
-              }
 		    },
 
 		    update: function (oldData) {},
@@ -457,6 +459,123 @@ var count = 0;
 		    remove: function() {}
 
 		});
+    
+    AFRAME.registerComponent('alpha-test', {
+      dependencies: ['material'],
+      init: function () {
+        this.el.getObject3D('mesh').material.alphaTest = 0.5;
+      }
+    });
+// 		AFRAME.registerComponent('alternate', {
+
+// 		    schema: {
+// 		        trigger: {
+// 		            default: 'shake'
+// 		        },
+// 		        threshold: {
+// 		        	default: 5
+// 	            },
+// 	            timeout: {
+// 	            	default: 500
+// 		        },
+// 		        zpos: {
+// 		            default: -0.85
+// 		        },
+// 		        xoffset: {
+// 		            default: 0
+// 		        },
+// 		        yoffset: {
+// 		            default: 0
+// 		        }
+// 		    },
+
+// 		    init: function() { 
+// 			    //create a new instance of shake.js.
+// 			    var myShakeEvent = new Shake({
+
+// 			        threshold: this.data.threshold,
+// 			        timeout: this.data.timeout
+			    
+// 			    });
+
+// 			    // start listening to device motion
+// 			    myShakeEvent.start();	        
+
+// 		        if ( this.data.trigger === "shake" ){
+
+// 	    			window.addEventListener(this.data.trigger, this.eventHandler.bind(this));
+//             // count++;
+	    		
+// 	    		} else if( this.data.trigger === "click" ){
+	    		
+// 	    			document.querySelector('a-scene').addEventListener(this.data.trigger, this.eventHandler.bind(this));
+	    		
+// 	    		} else {
+// 		      		console.log("Trigger not supported. choose either 'shake' or 'click'!");    			
+// 	    		}
+//           // console.log("count = " + count);
+
+// 		        this.cameraEl = document.querySelector('a-entity[camera]');
+
+// 		        if(this.cameraEl){
+
+// 			        this.initHeight =  Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100;
+
+// 			        this.yaxis = new THREE.Vector3(0, 1, 0);
+// 			        this.zaxis = new THREE.Vector3(0, 0, 1);
+
+// 			        this.pivot = new THREE.Object3D();
+// 			        this.el.object3D.position.set(this.data.xoffset, this.initHeight + this.data.yoffset, this.data.zpos);
+
+// 			        this.el.sceneEl.object3D.add(this.pivot);
+// 			        this.pivot.add(this.el.object3D);
+		      	
+// 		      	}else{
+// 		      		console.log("Please add a camera to your scene.");
+// 		      	}
+
+// 		    },
+
+// 		    eventHandler: function(evt) {
+//               if (this.el.getAttribute('visible') === false) {
+
+//                 var direction = this.zaxis.clone();
+//                   direction.applyQuaternion(this.cameraEl.object3D.quaternion);
+//                   var ycomponent = this.yaxis.clone().multiplyScalar(direction.dot(this.yaxis));
+//                   direction.sub(ycomponent);
+//                   direction.normalize();
+
+//                   this.pivot.quaternion.setFromUnitVectors(this.zaxis, direction);
+
+//                   var xposition = this.cameraEl.object3D.getWorldPosition().x;
+//                   var yposition = (Math.round(this.cameraEl.object3D.getWorldPosition().y * 100) / 100);
+//                   var zposition = this.cameraEl.object3D.getWorldPosition().z;
+
+//                   if(this.initHeight === yposition && this.initHeight !== 0){
+//               yposition = 0
+//                 }else{
+//                   yposition = yposition - this.initHeight;
+//                 }
+
+//                 this.pivot.position.set(xposition, yposition, zposition);
+
+//                   this.el.setAttribute('scale', '1 1 1');	            
+//                   this.el.setAttribute('visible', true);
+
+
+//               } 
+//               if (this.el.getAttribute('visible') === true) {
+
+//                   this.el.setAttribute('scale', '0.00001 0.00001 0.00001');
+//                   this.el.setAttribute('visible', false);
+//               }
+// 		    },
+
+// 		    update: function (oldData) {},
+
+// 		    remove: function() {}
+
+// 		});
 	/***/ }
 	/******/ ]);
 
@@ -566,8 +685,8 @@ var count = 0;
 	        deltaX = Math.abs(this.lastX - current.x);
 	        deltaY = Math.abs(this.lastY - current.y);
 	        deltaZ = Math.abs(this.lastZ - current.z);
-          count++;
-          console.log(count);
+          // count++;
+          // console.log(count);
 
 	        if (((deltaX > this.options.threshold) && (deltaY > this.options.threshold)) || ((deltaX > this.options.threshold) && (deltaZ > this.options.threshold)) || ((deltaY > this.options.threshold) && (deltaZ > this.options.threshold))) {
 	            //calculate time in milliseconds since last shake registered
